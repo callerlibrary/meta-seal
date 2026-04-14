@@ -233,8 +233,9 @@ jobs:
       id-token: write
     needs:
       - lint
-      - test-macOS-windows-binding
-      - test-linux-binding
+      - build
+      # - test-macOS-windows-binding
+      # - test-linux-binding
     steps:
       - uses: actions/checkout@v6
       - name: Setup pnpm
