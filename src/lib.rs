@@ -97,7 +97,7 @@ pub fn run_generate(config_path: Option<String>, cli_key: Option<String>) -> Res
 
 #[napi]
 pub fn run_read(
-  file_path: String,
+  file_path: Option<String>,
   cli_key: Option<String>,
   config_path: Option<String>,
 ) -> Result<String> {
@@ -131,10 +131,15 @@ pub fn run_read(
     ));
   }
 
-  let content = fs::read_to_string(&file_path).map_err(|e| {
+  let actual_file_path = file_path.unwrap_or_else(|| {
+    let out_dir = Path::new(&config.output_dir);
+    out_dir.join("VERSION").to_string_lossy().to_string()
+  });
+
+  let content = fs::read_to_string(&actual_file_path).map_err(|e| {
     Error::new(
       Status::GenericFailure,
-      format!("Failed to read file {}: {}", file_path, e),
+      format!("Failed to read file {}: {}", actual_file_path, e),
     )
   })?;
 

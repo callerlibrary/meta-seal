@@ -30,12 +30,8 @@ if (command === 'generate') {
     process.exit(1)
   }
 } else if (command === 'read') {
-  if (!parsedArgs.file) {
-    console.error('Error: Please provide a file path using -f or --file')
-    process.exit(1)
-  }
   try {
-    const result = runRead(parsedArgs.file, parsedArgs.key || null, parsedArgs.config || null)
+    const result = runRead(parsedArgs.file || null, parsedArgs.key || null, parsedArgs.config || null)
     console.log(result)
   } catch (err) {
     console.error(`Error reading VERSION file: ${err.message}`)
@@ -45,12 +41,12 @@ if (command === 'generate') {
   console.log(`
 Usage:
   meta-seal generate [options]
-  meta-seal read -f <file> [options]
+  meta-seal read [options]
 
 Options:
   -k, --key <key>       Encryption key (32 bytes)
   -c, --config <path>   Path to config file (default: .meta-sealrc)
-  -f, --file <path>     Path to the VERSION file to read
+  -f, --file <path>     Path to the VERSION file to read (optional, default: reads from config's output_dir/VERSION)
   `)
   process.exit(1)
 }

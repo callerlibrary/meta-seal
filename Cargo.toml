@@ -1,6 +1,6 @@
 
 [package]
-authors = ["LongYinan <lynweklm@gmail.com>"]
+authors = ["callerlibrary <96159769+callerlibrary@users.noreply.github.com>"]
 edition = "2021"
 name    = "meta_seal"
 version = "0.1.0"
