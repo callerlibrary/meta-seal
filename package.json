@@ -1,6 +1,6 @@
 {
   "name": "@callerlibrary/meta-seal",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A tool to generate an encrypted VERSION file with project, git, and build information.",
   "main": "index.js",
   "bin": {
