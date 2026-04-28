@@ -81,6 +81,14 @@ pnpm add -D @callerlibrary/meta-seal
 
 你可以使用 `npx` 或者 `pnpm dlx` 临时调用工具：
 
+#### 初始化配置文件
+
+自动在当前目录生成默认的 `.meta-sealrc` 配置文件：
+
+```bash
+npx meta-seal init
+```
+
 #### 生成并加密 VERSION 文件
 
 ```bash

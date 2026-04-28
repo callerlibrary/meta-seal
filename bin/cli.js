@@ -37,9 +37,38 @@ if (command === 'generate') {
     console.error(`Error reading VERSION file: ${err.message}`)
     process.exit(1)
   }
+} else if (command === 'init') {
+  const fs = require('fs')
+  const path = require('path')
+  const rcPath = path.join(process.cwd(), '.meta-sealrc')
+
+  if (fs.existsSync(rcPath)) {
+    console.log('.meta-sealrc already exists.')
+    process.exit(0)
+  }
+
+  const defaultConfig = {
+    basic_info: true,
+    git_commit: true,
+    git_commit_count: 3,
+    git_branch: true,
+    build_system: true,
+    output_dir: './dist',
+    encryption_key: '',
+    encryption_key_env: 'META_SEAL_KEY',
+  }
+
+  try {
+    fs.writeFileSync(rcPath, JSON.stringify(defaultConfig, null, 2) + '\n', 'utf-8')
+    console.log('Successfully created .meta-sealrc')
+  } catch (err) {
+    console.error(`Error creating .meta-sealrc: ${err.message}`)
+    process.exit(1)
+  }
 } else {
   console.log(`
 Usage:
+  meta-seal init
   meta-seal generate [options]
   meta-seal read [options]
 

@@ -81,6 +81,14 @@ Before running `npm run build` or `npm run meta:generate`, ensure a 32-byte key 
 
 You can temporarily invoke the tool using `npx` or `pnpm dlx`:
 
+#### Initialize Config File
+
+Automatically generate a default `.meta-sealrc` configuration file in the current directory:
+
+```bash
+npx meta-seal init
+```
+
 #### Generate and Encrypt VERSION file
 
 ```bash
