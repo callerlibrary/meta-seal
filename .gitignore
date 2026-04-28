@@ -23,3 +23,5 @@ coverage
 *.node
 
 .meta-sealrc
+index.js
+index.d.ts

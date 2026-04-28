@@ -2,8 +2,4 @@
 /* eslint-disable */
 export declare function runGenerate(configPath?: string | undefined | null, cliKey?: string | undefined | null): void
 
-export declare function runRead(
-  filePath?: string | undefined | null,
-  cliKey?: string | undefined | null,
-  configPath?: string | undefined | null,
-): string
+export declare function runRead(filePath?: string | undefined | null, cliKey?: string | undefined | null, configPath?: string | undefined | null): string
